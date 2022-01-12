@@ -4,7 +4,7 @@ Hello, I'm zhangepihan
 
 This is me in 2019, 
 
-![climb huashan](pic/climb.jpg)
+<img src="[pic/climb.jpg" alt="climb huashan" width="30%" />
 
 As a rookie of programming
 
