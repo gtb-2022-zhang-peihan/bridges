@@ -4,6 +4,8 @@ Hello, I'm zhangepihan
 
 This is me in 2019, 
 
+![climb huashan](pic/climb.jpg)
+
 As a rookie of programming
 
 Wish to make progress together ^_^
