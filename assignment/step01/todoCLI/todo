@@ -1,0 +1,17 @@
+#!/bin/bash
+if [[ $1 = "" ]];then
+    echo "usage: todo <init|list|add|edit|remove|reset|mark|remark> [args]"
+    fi
+
+if [[ $1 = "init" ]];then
+    touch 1.txt | echo -e "# To be done\n# Completed" > 1.txt
+    echo "Initialized successfully" 
+    fi
+
+if [[ $1 = "add" ]];then
+    echo "${*:2}"| sed -i "2i ${*:2}" 1.txt
+    fi
+
+if [[ $1 = "list" ]];then
+    cat 1.txt
+    fi
