@@ -21,8 +21,11 @@ if [[ $1 = "edit" && $2 -gt $line ]];then
     fi
 
 if [[ $1 = "remove" ]];then
-    echo ${*:2}
-    sed -i "$2"d 1.txt
+    for remove_number in ${*:2}
+    do
+        sed -i "$remove_number"s/./00000x00000/g 1.txt
+    done
+        sed -i /00000x00000/d 1.txt
     fi
 
 if [[ $1 = "mark" ]];then
