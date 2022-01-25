@@ -1,19 +1,18 @@
 #!/bin/bash
-line=$(wc -l 1.txt | awk '{print $1}')
-
 
 if [[ $1 = "" ]];then
     echo "usage: todo <init|list|add|edit|remove|reset|mark|remark> [args]"
-    fi
+fi
 
 if [[ $1 = "init" ]];then
     touch 1.txt | echo "Initialized successfully" 
-    fi
+fi
 
 if [[ $1 = "add" ]];then
     echo "TBD. ${*:2}" >> 1.txt
-    fi
+fi
 
+    line=$(wc -l 1.txt | awk '{print $1}')
 if [[ $1 = "edit" && $2 -le $line ]];then
     editjudgment=$(sed -n $2p 1.txt | grep -o TBD)
     if [[ $editjudgment = "TBD" ]];then
@@ -25,7 +24,7 @@ fi
 
 if [[ $1 = "edit" && $2 -gt $line ]];then
     echo "Task not found!"
-    fi
+fi
 
 if [[ $1 = "remove" ]];then
     for remove_number in ${*:2}
@@ -33,23 +32,37 @@ if [[ $1 = "remove" ]];then
         sed -i "$remove_number"s/./00000x00000/g 1.txt
     done
         sed -i /00000x00000/d 1.txt
-    fi
+fi
 
 if [[ $1 = "mark" ]];then
     for mark_number in ${*:2}
     do
         sed -i "$mark_number"s/TBD/CMP/g 1.txt
     done
-    fi
+fi
 
 if [[ $1 = "unmark" ]];then
     for unmark_number in ${*:2}
     do
         sed -i "$unmark_number"s/CMP/TBD/g 1.txt
     done
-    fi
+fi
 
 if [[ $1 = "list" ]];then
-    awk -F. '{print NR $2}' 1.txt
+    TBD_judge=$(grep -o TBD 1.txt | sed -n 1p)
+    CMP_judge=$(grep -o CMP 1.txt | sed -n 1p)
+    sort -r 1.txt -o 1.txt
+    echo "# To be done"
+    if [[ $TBD_judge = "TBD" ]];then
+        awk -F. '$1 ~ /TBD/ {print NR $2}' 1.txt
+    else
+        echo "Empty"
     fi
+    echo "# Completed"
+    if [[ $CMP_judge = "CMP" ]];then
+        awk -F. '$1 ~ /CMP/ {print NR $2}' 1.txt
+    else
+        echo "Empty"
+    fi
+fi
   
