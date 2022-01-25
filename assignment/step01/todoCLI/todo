@@ -65,4 +65,8 @@ if [[ $1 = "list" ]];then
         echo "Empty"
     fi
 fi
+
+if [[ $1 = reset ]];then
+    truncate -s 0 1.txt
+fi
   
