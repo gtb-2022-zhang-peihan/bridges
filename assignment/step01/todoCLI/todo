@@ -1,72 +1,79 @@
 #!/bin/bash
 
 if [[ $1 = "" ]];then
-    echo "usage: todo <init|list|add|edit|remove|reset|mark|remark> [args]"
+    echo "usage: todo <init|list|add|edit|remove|reset|mark|unmark> [args]"
 fi
 
 if [[ $1 = "init" ]];then
-    touch 1.txt | echo "Initialized successfully" 
+    mkdir ~/.todo 
+    cd ~/.todo 
+    touch tasks 
+    echo 'export PATH=~/.todo:$PATH' | cat >> ~/.bashrc 
+    source ~/.bashrc | echo "Initialized successfully"
 fi
+Detect_tasks=$(test -e ~/.todo/tasks && echo "exist" || echo "Not exist")
+if [[ $Detect_tasks = exist ]];then
+  if [[ $1 = "add" ]];then
+      echo "TBD. ${*:2}" >> ~/.todo/tasks
+  fi
 
-if [[ $1 = "add" ]];then
-    echo "TBD. ${*:2}" >> 1.txt
-fi
+      line=$(wc -l ~/.todo/tasks | awk '{print $1}')
+  if [[ $1 = "edit" && $2 -le $line ]];then
+      editjudgment=$(sed -n $2p ~/.todo/tasks | grep -o TBD)
+      if [[ $editjudgment = "TBD" ]];then
+          sed -i "$2c TBD. ${*:3}" ~/.todo/tasks
+      else
+          sed -i "$2c CMP. ${*:3}" ~/.todo/tasks
+      fi
+  fi
+  if [[ $1 = "edit" && $2 -gt $line ]];then
+      echo "Task not found!"
+  fi
+  if [[ $1 = "remove" ]];then
+      for remove_number in ${*:2}
+      do
+          sed -i "$remove_number"s/./00000x00000/g ~/.todo/tasks
+      done
+          sed -i /00000x00000/d ~/.todo/tasks
+  fi
+  if [[ $1 = "mark" ]];then
+      for mark_number in ${*:2}
+      do
+          sed -i "$mark_number"s/TBD/CMP/g ~/.todo/tasks
+      done
+  fi
+  if [[ $1 = "unmark" ]];then
+      for unmark_number in ${*:2}
+      do
+          sed -i "$unmark_number"s/CMP/TBD/g ~/.todo/tasks
+      done
+  fi
+  if [[ $1 = "list" ]];then
+      TBD_judge=$(grep -o TBD ~/.todo/tasks | sed -n 1p)
+      CMP_judge=$(grep -o CMP ~/.todo/tasks | sed -n 1p)
+      sort -r ~/.todo/tasks -o ~/.todo/tasks
+      echo "# To be done"
+      if [[ $TBD_judge = "TBD" ]];then
+          awk -F. '$1 ~ /TBD/ {print NR $2}' ~/.todo/tasks
+      else
+          echo "Empty"
+      fi
+      echo "# Completed"
+      if [[ $CMP_judge = "CMP" ]];then
+          awk -F. '$1 ~ /CMP/ {print NR $2}' ~/.todo/tasks
+      else
+          echo "Empty"
+      fi
+  fi
 
-    line=$(wc -l 1.txt | awk '{print $1}')
-if [[ $1 = "edit" && $2 -le $line ]];then
-    editjudgment=$(sed -n $2p 1.txt | grep -o TBD)
-    if [[ $editjudgment = "TBD" ]];then
-        sed -i "$2c TBD. ${*:3}" 1.txt
-    else
-        sed -i "$2c CMP. ${*:3}" 1.txt
-    fi
+  if [[ $1 = reset ]];then
+      truncate -s 0 ~/.todo/tasks
+  fi
+else
+    echo "Please run 'todo init' before running '$1' command"
 fi
-
-if [[ $1 = "edit" && $2 -gt $line ]];then
-    echo "Task not found!"
+if [[ $1 != "" ]] && [[ $1 != "add" ]] && [[ $1 != "list" ]] && \
+[[ $1 != "init" ]] && [[ $1 != "edit" ]] && [[ $1 != "remove" ]] && \
+[[ $1 != "reset" ]] && [[ $1 != "mark" ]] && [[ $1 != "unmark" ]];then 
+echo "Unknown command '$1'!"
 fi
-
-if [[ $1 = "remove" ]];then
-    for remove_number in ${*:2}
-    do
-        sed -i "$remove_number"s/./00000x00000/g 1.txt
-    done
-        sed -i /00000x00000/d 1.txt
-fi
-
-if [[ $1 = "mark" ]];then
-    for mark_number in ${*:2}
-    do
-        sed -i "$mark_number"s/TBD/CMP/g 1.txt
-    done
-fi
-
-if [[ $1 = "unmark" ]];then
-    for unmark_number in ${*:2}
-    do
-        sed -i "$unmark_number"s/CMP/TBD/g 1.txt
-    done
-fi
-
-if [[ $1 = "list" ]];then
-    TBD_judge=$(grep -o TBD 1.txt | sed -n 1p)
-    CMP_judge=$(grep -o CMP 1.txt | sed -n 1p)
-    sort -r 1.txt -o 1.txt
-    echo "# To be done"
-    if [[ $TBD_judge = "TBD" ]];then
-        awk -F. '$1 ~ /TBD/ {print NR $2}' 1.txt
-    else
-        echo "Empty"
-    fi
-    echo "# Completed"
-    if [[ $CMP_judge = "CMP" ]];then
-        awk -F. '$1 ~ /CMP/ {print NR $2}' 1.txt
-    else
-        echo "Empty"
-    fi
-fi
-
-if [[ $1 = reset ]];then
-    truncate -s 0 1.txt
-fi
-  
