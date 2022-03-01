@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#添加文件的环境变量
+#设置alias
 if [[ $1 = "" ]];then
     echo "usage: todo <init|list|add|edit|remove|reset|mark|unmark> [args]"
 fi
