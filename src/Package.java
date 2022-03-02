@@ -46,8 +46,12 @@ public class Package {
         System.out.println(Integer.toString(x3));
         System.out.println(Integer.toString(x3,16));
         System.out.println(Integer.toBinaryString(x3));//将整数格式化转变为指定进制的字符串
-
-
+        //handle unsigned
+        byte c1 = 127;
+        byte c2 = -128;
+        System.out.println(Byte.toUnsignedInt(c1));
+        System.out.println(Byte.toUnsignedInt(c2));
+        //其他包装的静态变量还需查阅补充
     }
 }
 
