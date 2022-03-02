@@ -37,6 +37,17 @@ public class Package {
         Integer s2 = Integer.valueOf(545);
         System.out.println(s1.intValue());
         System.out.println(s2.intValue());
+        //switch of system scale 进制转换
+        int x1 = Integer.parseInt("100");
+        int x2 = Integer.parseInt("100", 16);
+        System.out.println(x1);
+        System.out.println(x2);//字符串转变为整数
+        int x3 = 100;
+        System.out.println(Integer.toString(x3));
+        System.out.println(Integer.toString(x3,16));
+        System.out.println(Integer.toBinaryString(x3));//将整数格式化转变为指定进制的字符串
+
+
     }
 }
 
