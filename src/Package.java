@@ -32,6 +32,11 @@ public class Package {
         System.out.println("q3 == q4: " + (q3==q4));//数值较小时系统会自动将 Integar x = 99 变为 Integar x = integar.Valueof(99),实际应用中不要用这种方法
         System.out.println("q1.equal(q2): " + q1.equals(q2));
         System.out.println("q3.equal(q4): " + q3.equals(q4));
+        //creat new example of Integar
+        Integar s1 = new Integar(588);
+        Integer s2 = Integer.valueOf(545);
+        System.out.println(s1.intValue());
+        System.out.println(s2.intValue());
     }
 }
 
