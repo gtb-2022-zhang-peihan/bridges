@@ -18,6 +18,11 @@ public class Package {
         Integer a2 = Integer.valueOf("100");
         System.out.println(a1.intValue());
         System.out.println(a2.intValue());
+        //Auto boxing
+        Integer q = 100;
+        int r = q.intValue();
+        int x = q;
+        System.out.println(r);
     }
 }
 
