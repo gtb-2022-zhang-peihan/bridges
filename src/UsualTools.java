@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class UsualTools {
     public static void main(String[] args) {
         System.out.println(Math.abs(-5));
@@ -18,6 +20,12 @@ public class UsualTools {
         long n = (long) y;
         System.out.println(y);
         System.out.println(n);
-
+        //Random number
+        Random r = new Random();
+        System.out.println(r.nextInt());
+        System.out.println(r.nextDouble());
+        System.out.println(r.nextFloat());
+        System.out.println(r.nextLong());
+        System.out.println(r.nextInt(5));//伪随机
     }
 }
