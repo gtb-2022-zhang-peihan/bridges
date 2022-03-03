@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class UsualTools {
@@ -27,5 +28,8 @@ public class UsualTools {
         System.out.println(r.nextFloat());
         System.out.println(r.nextLong());
         System.out.println(r.nextInt(5));//伪随机
+        //SecureRandom
+        SecureRandom sr = new SecureRandom();
+        System.out.println(sr.nextInt(100));
     }
 }
