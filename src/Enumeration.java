@@ -15,6 +15,23 @@ public class Enumeration {
             }else {
                 System.out.println("Today is " + day + ". Work at office");
             }
+
+            //枚举在switch中的练习
+        switch (day) {
+            case MON:
+            case TUE:
+            case WED:
+            case THU:
+            case FRI:
+                System.out.println("Today is " + day + ". Work at office!");
+                break;
+            case SAT:
+            case SUN:
+                System.out.println("Today is " + day + ". Work at home!");
+                break;
+            default:
+                throw new RuntimeException("cannot process" + day);
+        }
     }
 }
 
@@ -33,8 +50,4 @@ enum Weekday {
     public String toString() {
         return this.chinese;
     }
-}
-
-enum Color {
-    Red, Blue, Green, Yellow;
 }
