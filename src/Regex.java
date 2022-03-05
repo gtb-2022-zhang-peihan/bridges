@@ -88,5 +88,24 @@ public class Regex {
             System.out.println("group1= " + c2.group(1));
             System.out.println("group2= " + c2.group(2));
         }
+        //search and replace
+        System.out.printf("%s%s%s\n","a b c".split("\\s")[0],"a b c".split("\\s")[1],"a b c".split("\\s")[2]);
+        //search
+        String f3 = "the quick brown fox jumps over the lazy dog.";
+        Pattern f4 = Pattern.compile("\\wo\\w");
+        Matcher f5 = f4.matcher(f3);
+        while (f5.find()) {
+            String sub = f3.substring(f5.start(), f5.end());
+            System.out.println(sub);
+        }
+        //replace
+        String f6 = "The     quick\t\t brown   fox  jumps   over the  lazy dog.";
+        String f7 = f6.replaceAll("\\s+","\s");
+        System.out.println(f6);
+        System.out.println(f7);
+        //反向引用
+        String r1 = "the quick brown fox jumps over the lazy dog.";
+        String r2 = r1.replaceAll("\\s([a-z]{4})\\s","\s#$1#\s");
+        System.out.println(r2);
     }
 }
