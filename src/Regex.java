@@ -1,3 +1,4 @@
+import java.util.regex.*;
 public class Regex {
     public static void main(String[] args) {
         String s = "20\\d\\d";
@@ -59,5 +60,26 @@ public class Regex {
         System.out.println("learn Java".matches(a5));
         System.out.println("learn php".matches(a5));
         System.out.println("learn Go".matches(a5));
+        //分组匹配
+        Pattern p = Pattern.compile("(\\d{3,4})\\-(\\d{7,8})");
+        Matcher m = p.matcher("020-5558621");
+        if (m.matches()) {
+            String q1 = m.group(1);
+            String q2 = m.group(2);
+            System.out.println(q1);
+            System.out.println(q2);
+        }else {
+            System.out.println("Matching False!");// 传入0会得到整个字串
+        }
+        Pattern t = Pattern.compile("([0-1]\\d|2[0-3])\\:([0-5]\\d)\\:([0-5]\\d)");
+        Matcher time = t.matcher("23:01:59");
+        if (time.matches()) {
+            String hour = time.group(1);
+            String min = time.group(2);
+            String second = time.group(3);
+            System.out.printf("%s时%s分%s秒",hour,min,second);
+        } else {
+            System.out.println("Wrong input!");
+        }
     }
 }
