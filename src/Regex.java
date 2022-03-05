@@ -77,9 +77,16 @@ public class Regex {
             String hour = time.group(1);
             String min = time.group(2);
             String second = time.group(3);
-            System.out.printf("%s时%s分%s秒",hour,min,second);
+            System.out.printf("%s时%s分%s秒\n",hour,min,second);
         } else {
             System.out.println("Wrong input!");
+        }
+        //非贪婪匹配
+        Pattern c1 = Pattern.compile("(\\d+?)(0*)");
+        Matcher c2 = c1.matcher("1230000");
+        if (c2.matches()) {
+            System.out.println("group1= " + c2.group(1));
+            System.out.println("group2= " + c2.group(2));
         }
     }
 }
