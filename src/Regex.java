@@ -34,5 +34,30 @@ public class Regex {
         String s10 = "a\\d{3,4}";//匹配指定n-m个字符
         System.out.println("a222".matches(s10));
         System.out.println("a2121".matches(s10));
+        //complex rule of matching
+        System.out.println("#####complex rule#####");
+        String a = "3131sasfasd".replaceAll("\\d{2}", "Z");
+        String b = "3131sasfasd".replaceAll("^\\d{2}", "Z");
+        String c = "3131sdasfasd".replaceAll("sd", "Z");
+        String d = "3131sdasfasd".replaceAll("sd$", "Z");
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+        System.out.println(d);
+        String a1 = "[1-9][a-f]";
+        System.out.println("2d".matches(a1));
+        String a2 = "[0-9a-fA-F]{6}";
+        System.out.println("1a2b3c".matches(a2));
+        String a3 = "[^1-9]{3}";
+        System.out.println("0AS".matches(a3));
+        System.out.println("2A3".matches(a3));
+        String a4 = "java|php";
+        System.out.println("java".matches(a4));
+        System.out.println("php".matches(a4));
+        String a5 = "learn\\s([jJ]ava|[Pp]hp|(G|g)o)";
+        System.out.println("learn Java".matches(a5));
+        System.out.println("learn Java".matches(a5));
+        System.out.println("learn php".matches(a5));
+        System.out.println("learn Go".matches(a5));
     }
 }
