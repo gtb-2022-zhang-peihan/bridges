@@ -19,5 +19,20 @@ public class Regex {
         System.out.println("s a".matches(s5));
         System.out.println("s   a".matches(s5));//tab用\t
         //匹配非此范围的可以用大写代替
+        //repeat matching
+        String s6 = "a\\d*";//匹配任意字符 0-infinity
+        System.out.println("a35555".matches(s6));
+        System.out.println("a".matches(s6));
+        String s7 = "a\\d+";//至少一个字符
+        System.out.println("a12".matches(s7));
+        System.out.println("a".matches(s7));
+        String s8 = "a\\d?";//0或1个字符
+        System.out.println("a2".matches(s8));
+        System.out.println("a".matches(s8));
+        String s9 = "a\\d{3}";//匹配指定n个字符
+        System.out.println("a222".matches(s9));
+        String s10 = "a\\d{3,4}"//匹配指定n-m个字符
+        System.out.println("a222".matches(s10));
+        System.out.println("a2121".matches(s10));
     }
 }
