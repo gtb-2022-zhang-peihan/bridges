@@ -31,7 +31,7 @@ public class Regex {
         System.out.println("a".matches(s8));
         String s9 = "a\\d{3}";//匹配指定n个字符
         System.out.println("a222".matches(s9));
-        String s10 = "a\\d{3,4}"//匹配指定n-m个字符
+        String s10 = "a\\d{3,4}";//匹配指定n-m个字符
         System.out.println("a222".matches(s10));
         System.out.println("a2121".matches(s10));
     }
