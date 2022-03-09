@@ -42,5 +42,17 @@ public class Array {
         qqqq = Arrays.copyOf(originalArray,10);
         Arrays.fill(qqqq,5,9,0);
         System.out.println(Arrays.toString(qqqq));
+        String cccc = "";
+        for (int aaaa:qqqq){
+            cccc += aaaa;
+        }
+        System.out.println(cccc);
+        String[] originalarray = {"A", "quick", "brown", "fox"};
+        String[] reversed = null;
+        reversed = Arrays.copyOf(originalarray,4);
+        for(int a=3; a>=0; a--){
+            reversed[a]=originalarray[3-a];
+        }
+        System.out.println(Arrays.toString(reversed));
     }
 }
