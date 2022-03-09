@@ -33,5 +33,14 @@ public class Array {
                 {3,4,5,6}
         };
         System.out.println(nb.length);
+        int newArray[] = new int[1];
+        newArray = Arrays.copyOf(na,11);
+        newArray[10] = 1;
+        System.out.println(Arrays.toString(newArray));
+        int[] originalArray = {1, 2, 3, 4, 5};
+        int qqqq[] = new int[10];
+        qqqq = Arrays.copyOf(originalArray,10);
+        Arrays.fill(qqqq,5,9,0);
+        System.out.println(Arrays.toString(qqqq));
     }
 }
