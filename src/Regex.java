@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.regex.*;
 public class Regex {
     public static void main(String[] args) {
@@ -91,8 +92,9 @@ public class Regex {
         //search and replace
         System.out.printf("%s%s%s\n","a b c".split("\\s")[0],"a b c".split("\\s")[1],"a b c".split("\\s")[2]);
         //search
+        System.out.println("#####");
         String f3 = "the quick brown fox jumps over the lazy dog.";
-        Pattern f4 = Pattern.compile("\\wo\\w");
+        Pattern f4 = Pattern.compile("ox");
         Matcher f5 = f4.matcher(f3);
         while (f5.find()) {
             String sub = f3.substring(f5.start(), f5.end());
@@ -107,5 +109,19 @@ public class Regex {
         String r1 = "the quick brown fox jumps over the lazy dog.";
         String r2 = r1.replaceAll("\\s([a-z]{4})\\s","\s#$1#\s");
         System.out.println(r2);
+        String regex ="b\\w+t";
+        String text = "the bat is the best";
+        Pattern r =Pattern.compile(regex);
+        Matcher rq = r.matcher(text);
+        while (rq.find()) {
+            String sub = text.substring(rq.start(), rq.end());
+            System.out.println(sub);
+        }
+        System.out.println("a\sb");
+        String originalString = "     The string with tailing space.";
+        String modifiedString = originalString.stripLeading();
+        System.out.println(modifiedString);
+        int A = 'q';
+        System.out.println(A);
     }
 }

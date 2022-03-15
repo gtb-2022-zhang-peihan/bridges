@@ -68,5 +68,17 @@ public class Count {
         abc[1] = "dog";
         System.out.println(qwer);
         System.out.println(abc[1]);
+        char a = '\u042A';
+        System.out.println(a);
+        double aaa = 2.75;
+        System.out.println(aaa);
+        int xx = 2147483647;
+        xx *= 2;
+        System.out.println(xx);
+        int integer = 1;
+        int sin = -1;
+        int cos = integer ^ sin;
+        System.out.println(123456^-1);
+
     }
 }

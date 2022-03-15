@@ -68,6 +68,9 @@ public class StringAndCoding {
         scores[2] = 99;
         s.printScores();
         System.out.println(Arrays.toString(scores));
+        String aaa = "abcdefg";
+        String bbb = new StringBuilder(aaa).reverse().toString();
+        System.out.println(bbb);
     }
 }
 class Score {
