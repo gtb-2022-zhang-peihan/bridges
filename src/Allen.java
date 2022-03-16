@@ -20,10 +20,11 @@ public class Allen {
         Person xiaoming = new Person("Xiaoming",12);
         Student xiaohong = new Student("Xiaohong",20,99);
         Student xiaojun = new PrimaryStudent("Xiaojun",9,100,5);
-        System.out.println(xiaojun.getAge());
-        System.out.println(xiaojun.getScore());
-        System.out.println(xiaojun.getName());
-        //System.out.println(xiaojun.getGrade());
+        PrimaryStudent xiaojun1 = (PrimaryStudent)xiaojun;
+        System.out.println(xiaojun1.getAge());
+        System.out.println(xiaojun1.getScore());
+        System.out.println(xiaojun1.getName());
+        System.out.println(xiaojun1.getGrade());
     }
 }
 
@@ -117,6 +118,10 @@ class PrimaryStudent extends Student {
 
     public int getGrade() {
         return this.grade;
+    }
+
+    public void setGrade() {
+        this.grade = grade;
     }
 
 }
