@@ -1,5 +1,8 @@
 public class Allen {
     public static void main(String[] args) {
+        Group a = new Group();
+        a.setNames("zhangpeihan","zhangyong","wangxingfang");
+        System.out.println(a.getNames());
         Person z = new Person("zhang",25);
         System.out.println(z.getName());
         System.out.println(z.getAge());
@@ -25,14 +28,32 @@ public class Allen {
         System.out.println(xiaojun1.getScore());
         System.out.println(xiaojun1.getName());
         System.out.println(xiaojun1.getGrade());
+        System.out.println(z.toString());
     }
 }
 
+class Group {
+    private String[] names;
 
+    public void setNames(String... names) {
+        this.names = names;
+    }
+
+    public String[] getNames() {
+        for (int i=0; i<names.length; i++){
+            System.out.println(names[i]);
+        }
+        return this.names;
+    }
+}
 
 class Person {
     protected String name = "unnamed";
     protected int age = 1;
+
+    public String toString() {
+        return "Person:name=" + name;
+    }
 
     public Person(String name) {
         this(name,18);
