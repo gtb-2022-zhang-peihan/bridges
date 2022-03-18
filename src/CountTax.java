@@ -26,21 +26,18 @@ public class CountTax {
 }
 
 
-abstract class Income {
-    protected double income;
+interface Income {
 
-    public Income(double income) {
-        this.income = income;
-    }
+    double getIncome();
 
-    public abstract double getIncome();
-
-    public abstract double getTax();
+    double getTax();
 }
 
-class Salary extends Income {
+class Salary implements Income {
+    private double income;
+
     public Salary(double income){
-        super(income);
+        this.income = income;
     }
 
     @Override
@@ -56,9 +53,11 @@ class Salary extends Income {
     }
 }
 
-class Remuneration extends Income {
+class Remuneration implements Income {
+    private double income;
+
     public Remuneration(double income){
-        super(income);
+        this.income = income;
     }
 
     @Override
