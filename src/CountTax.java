@@ -26,20 +26,16 @@ public class CountTax {
 }
 
 
-class Income {
+abstract class Income {
     protected double income;
 
     public Income(double income) {
-        this.income=income;
+        this.income = income;
     }
 
-    public double getIncome(){
-        return this.income;
-    }
+    public abstract double getIncome();
 
-    public double getTax(){
-        return income*0.1;
-    }
+    public abstract double getTax();
 }
 
 class Salary extends Income {
@@ -53,6 +49,10 @@ class Salary extends Income {
             return 0;
         }
         return (income-5000)*0.2;
+    }
+
+    public double getIncome(){
+        return this.income;
     }
 }
 
@@ -70,5 +70,9 @@ class Remuneration extends Income {
             return (income-800)*0.7*0.2;
         }
         return income*0.8*0.7*0.2;
+    }
+
+    public double getIncome(){
+        return this.income;
     }
 }
