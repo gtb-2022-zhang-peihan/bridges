@@ -29,6 +29,8 @@ public class Allen {
         System.out.println(xiaojun1.getName());
         System.out.println(xiaojun1.getGrade());
         System.out.println(z.toString());
+        Person.setCount(5);
+
     }
 }
 
@@ -50,6 +52,11 @@ class Group {
 class Person {
     protected String name = "unnamed";
     protected int age = 1;
+    public static int count;
+
+    public static void setCount(int value) {
+        value = count;
+    }
 
     public String toString() {
         return "Person:name=" + name;
