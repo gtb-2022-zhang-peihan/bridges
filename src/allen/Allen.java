@@ -1,3 +1,5 @@
+package allen;
+
 public class Allen {
     public static void main(String[] args) {
         Group a = new Group();

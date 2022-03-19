@@ -1,3 +1,5 @@
+package allen;
+
 public class CountTax {
     public static void main(String[]args){
     Income[] incomes = new Income[]{
