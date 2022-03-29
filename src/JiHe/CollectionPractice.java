@@ -1,4 +1,5 @@
 package JiHe;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 ;
 
@@ -65,7 +66,21 @@ public class CollectionPractice {
                         "\"Panda. Large black-and-white bear-like mammal, native to China. Eats, " +
                         "shoots and leaves.\"";
         System.out.println(text);
+
+        byte[] bs = toGBK("中中");
+        System.out.println(Arrays.toString(bs));
+    }
+
+    static byte[] toGBK(String s) {
+        try {
+            return s.getBytes("GBK");
+        }catch (UnsupportedEncodingException e) {
+            System.out.println(e);
+            return s.getBytes();
+        }
     }
 }
+
+
 
 
