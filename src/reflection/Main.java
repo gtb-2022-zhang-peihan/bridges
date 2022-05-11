@@ -2,7 +2,7 @@ package reflection;
 
 import java.lang.reflect.Method;
 
-public class Cls {
+public class Main {
     public static void main(String[] args) throws Exception{
         printClassInfo("".getClass());
         printClassInfo(int.class);
