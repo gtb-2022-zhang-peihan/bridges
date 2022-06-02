@@ -19,5 +19,8 @@ public class FIlterr {
         for(String i : array){
             System.out.println(i);
         }
+
+        String A = "AAA";
+        System.out.println(A.length());
     }
 }
